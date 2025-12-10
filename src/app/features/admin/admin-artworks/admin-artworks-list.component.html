@@ -1,0 +1,81 @@
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="h4 mb-0">Artworks (admin)</h2>
+    <button class="btn btn-primary" type="button" (click)="create()">
+      Add artwork
+    </button>
+  </div>
+
+  <p *ngIf="error" class="alert alert-danger">{{ error }}</p>
+
+  <div *ngIf="loading" class="text-muted">Loading…</div>
+
+  <table
+    class="table align-middle"
+    *ngIf="!loading && artworks.length"
+  >
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>Year</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th style="width: 130px"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let artwork of artworks">
+        <td>{{ artwork.title }}</td>
+
+        <!-- artistName через $any, чтобы Angular не ругался на тип -->
+        <td>{{ $any(artwork).artistName || '—' }}</td>
+
+        <td>{{ artwork.year || '—' }}</td>
+
+        <td>
+          <span *ngIf="$any(artwork).price; else displayOnly">
+            {{
+              $any(artwork).price
+                | currency : 'USD' : 'symbol' : '1.0-0'
+            }}
+          </span>
+          <ng-template #displayOnly>—</ng-template>
+        </td>
+
+        <td>
+          {{
+            $any(artwork).status === 'for-sale'
+              ? 'For sale'
+              : 'Display only'
+          }}
+        </td>
+
+        <td class="text-end">
+          <button
+            class="btn btn-sm btn-outline-secondary me-1"
+            type="button"
+            (click)="edit(artwork)"
+          >
+            Edit
+          </button>
+          <button
+            class="btn btn-sm btn-outline-danger"
+            type="button"
+            (click)="delete(artwork)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    *ngIf="!loading && !artworks.length"
+    class="alert alert-info mb-0"
+  >
+    No artworks found yet. Use “Add artwork” to create the first
+    entry.
+  </div>
+</div>

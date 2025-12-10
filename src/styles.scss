@@ -1,1 +1,451 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   Aurora Art Expo – Global Styling & Theming (v3 – contrast fixes)
+   ========================================================= */
+
+/* 1. CSS variables (light theme defaults) */
+:root {
+  /* Base */
+  --aurora-bg: #f4f4f7;
+  --aurora-surface: #ffffff;
+  --aurora-surface-soft: #f9fafb;
+  --aurora-surface-strong: #020617;
+  --aurora-border-soft: rgba(15, 23, 42, 0.08);
+
+  --aurora-text: #020617;
+  --aurora-text-muted: #4b5563;
+
+  /* Accent / brand */
+  --aurora-accent: #eab308; /* gold */
+  --aurora-accent-strong: #f97316; /* orange */
+  --aurora-accent-soft: rgba(234, 179, 8, 0.12);
+
+  /* Navbar / overlays */
+  --aurora-navbar-bg: rgba(248, 250, 252, 0.96);
+  --aurora-navbar-border: rgba(148, 163, 184, 0.35);
+
+  /* Cards */
+  --aurora-card-bg: #ffffff;
+  --aurora-card-bg-glass: rgba(255, 255, 255, 0.9);
+  --aurora-card-border: rgba(148, 163, 184, 0.28);
+  --aurora-shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.08);
+
+  /* Buttons */
+  --aurora-btn-primary-bg: linear-gradient(135deg, #eab308, #f97316);
+  --aurora-btn-primary-bg-hover: linear-gradient(135deg, #facc15, #fb923c);
+  --aurora-btn-primary-text: #020617;
+
+  /* Misc */
+  --aurora-radius-lg: 1.25rem;
+  --aurora-radius-pill: 999px;
+}
+
+/* 2. Dark theme overrides */
+body.theme-dark {
+  --aurora-bg: #020617;
+  --aurora-surface: #020617;
+  --aurora-surface-soft: #020617;
+  --aurora-surface-strong: #020617;
+  --aurora-border-soft: rgba(148, 163, 184, 0.25);
+
+  --aurora-text: #f9fafb;
+  --aurora-text-muted: #e5e7eb; /* brighter muted text */
+
+  --aurora-navbar-bg: rgba(15, 23, 42, 0.95);
+  --aurora-navbar-border: rgba(51, 65, 85, 0.85);
+
+  --aurora-card-bg: #020617;
+  --aurora-card-bg-glass: rgba(15, 23, 42, 0.96);
+  --aurora-card-border: rgba(148, 163, 184, 0.38);
+  --aurora-shadow-soft: 0 22px 55px rgba(0, 0, 0, 0.68);
+
+  --aurora-btn-primary-bg: linear-gradient(135deg, #facc15, #fb923c);
+  --aurora-btn-primary-bg-hover: linear-gradient(135deg, #fde047, #fdba74);
+  --aurora-btn-primary-text: #020617;
+}
+
+/* 3. Base layout & typography */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+  background: radial-gradient(circle at top left, #e2e8f0 0, #f4f4f7 32%, var(--aurora-bg) 90%);
+  color: var(--aurora-text);
+  padding-top: 72px; /* space for navbar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+.navbar-brand {
+  font-family: 'Playfair Display', 'Georgia', serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* 4. Utilities */
+
+.section-padding {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+.section-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+  color: var(--aurora-text-muted);
+}
+
+.display-heading {
+  letter-spacing: -0.04em;
+}
+
+.text-muted-soft {
+  color: var(--aurora-text-muted) !important;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.hover-elevate {
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.hover-elevate:hover {
+  transform: translateY(-4px) translateZ(0);
+  box-shadow: var(--aurora-shadow-soft);
+  border-color: rgba(234, 179, 8, 0.45);
+}
+
+/* 5. Cards / surfaces */
+
+.soft-card {
+  background: var(--aurora-card-bg);
+  border-radius: var(--aurora-radius-lg);
+  border: 1px solid var(--aurora-card-border);
+  box-shadow: var(--aurora-shadow-soft);
+  backdrop-filter: blur(12px);
+  color: var(--aurora-text);
+}
+
+.glass-card {
+  background: var(--aurora-card-bg-glass);
+  border-radius: var(--aurora-radius-lg);
+  border: 1px solid var(--aurora-card-border);
+  box-shadow: var(--aurora-shadow-soft);
+  backdrop-filter: blur(18px);
+  color: var(--aurora-text);
+}
+
+/* Ensure card text is bright enough in dark mode */
+body.theme-dark .card,
+body.theme-dark .soft-card,
+body.theme-dark .glass-card {
+  color: #f9fafb;
+}
+
+body.theme-dark .card .text-muted,
+body.theme-dark .soft-card .text-muted,
+body.theme-dark .glass-card .text-muted,
+body.theme-dark .card .text-secondary,
+body.theme-dark .soft-card .text-secondary,
+body.theme-dark .glass-card .text-secondary {
+  color: #e5e7eb !important;
+  opacity: 1 !important;
+}
+
+/* Fix super-faded white helpers */
+body.theme-dark .text-white-50,
+body.theme-dark .text-light {
+  color: rgba(249, 250, 251, 0.9) !important;
+}
+
+/* 6. Buttons */
+
+.btn-primary {
+  background-image: var(--aurora-btn-primary-bg);
+  border: none;
+  color: var(--aurora-btn-primary-text);
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(234, 179, 8, 0.45);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-image: var(--aurora-btn-primary-bg-hover);
+  box-shadow: 0 15px 40px rgba(234, 179, 8, 0.65);
+}
+
+/* Ghost button used around the site */
+.btn-ghost {
+  border-radius: var(--aurora-radius-pill);
+  border: 1px solid var(--aurora-card-border);
+  background: transparent;
+  color: var(--aurora-text);
+  font-weight: 500;
+}
+.btn-ghost:hover {
+  background: rgba(15, 23, 42, 0.03);
+}
+body.theme-dark .btn-ghost:hover {
+  background: rgba(148, 163, 184, 0.12);
+}
+
+/* Improve contrast for outline-dark */
+.btn-outline-dark {
+  color: #020617;
+  border-color: rgba(15, 23, 42, 0.7);
+}
+.btn-outline-dark:hover {
+  background-color: #020617;
+  color: #f9fafb;
+}
+body.theme-dark .btn-outline-dark {
+  color: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.7);
+}
+body.theme-dark .btn-outline-dark:hover {
+  background-color: #e5e7eb;
+  color: #020617;
+}
+
+/* CTA pills in hero: “Admin panel / Tickets” – visible in both themes */
+.hero-section .btn-outline-light {
+  border-radius: var(--aurora-radius-pill);
+  border-width: 1px;
+  padding-inline: 1.75rem;
+  padding-block: 0.6rem;
+  font-weight: 600;
+  color: #111827 !important;
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-color: rgba(15, 23, 42, 0.18) !important;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+}
+.hero-section .btn-outline-light:hover {
+  background-color: #111827 !important;
+  color: #f9fafb !important;
+  border-color: #111827 !important;
+}
+
+body.theme-dark .hero-section .btn-outline-light {
+  color: #f9fafb !important;
+  background-color: rgba(15, 23, 42, 0.7) !important;
+  border-color: rgba(148, 163, 184, 0.6) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+}
+body.theme-dark .hero-section .btn-outline-light:hover {
+  background-color: #f9fafb !important;
+  color: #020617 !important;
+  border-color: #f9fafb !important;
+}
+
+/* 7. Navbar & footer */
+
+.navbar {
+  background: var(--aurora-navbar-bg) !important;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--aurora-navbar-border);
+}
+
+/* Brand */
+.navbar .navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: 1.05rem;
+}
+
+/* Navbar links – strong contrast */
+
+.navbar .nav-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  position: relative;
+  opacity: 1 !important;
+}
+
+/* Light mode navbar: dark text */
+body.theme-light .navbar .nav-link {
+  color: #111827 !important;
+}
+body.theme-light .navbar .nav-link:not(.active) {
+  color: rgba(15, 23, 42, 0.7) !important;
+}
+
+/* Dark mode navbar: bright text */
+body.theme-dark .navbar .nav-link {
+  color: #e5e7eb !important;
+}
+body.theme-dark .navbar .nav-link:not(.active) {
+  color: #cbd5f5 !important;
+}
+
+/* Underline highlight */
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+  color: var(--aurora-text) !important;
+}
+body.theme-dark .navbar .nav-link.active,
+body.theme-dark .navbar .nav-link:hover {
+  color: #f9fafb !important;
+}
+
+.navbar .nav-link.active::after,
+.navbar .nav-link:hover::after {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
+  bottom: 0.1rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #eab308, #f97316);
+}
+
+/* Brand mark */
+.logo-mark {
+  width: 32px;
+  height: 32px;
+  background: radial-gradient(circle at 0 0, #facc15, #22d3ee);
+  color: #020617;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.55rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+}
+
+/* Theme toggle (the last nav item with the moon/sun) */
+.navbar .nav-item:last-child .btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-weight: 500;
+  text-decoration: none;
+  opacity: 1 !important;
+}
+.navbar .nav-item:last-child .btn-link:hover {
+  text-decoration: none;
+}
+body.theme-dark .navbar .nav-item:last-child .btn-link {
+  color: #f9fafb !important;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--aurora-border-soft);
+  background: radial-gradient(circle at bottom, rgba(15, 23, 42, 0.05), transparent);
+}
+footer p,
+footer a {
+  color: var(--aurora-text-muted);
+}
+footer a:hover {
+  color: var(--aurora-text);
+}
+
+/* 8. Forms & tables */
+
+.form-control,
+.form-select,
+textarea.form-control {
+  background-color: var(--aurora-card-bg);
+  border-radius: 0.9rem;
+  border: 1px solid var(--aurora-card-border);
+  color: var(--aurora-text);
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: rgba(234, 179, 8, 0.9);
+  box-shadow: 0 0 0 0.15rem rgba(234, 179, 8, 0.3);
+}
+
+.table {
+  color: var(--aurora-text);
+}
+.table thead {
+  background: var(--aurora-surface-soft);
+}
+.table tbody tr:hover {
+  background: rgba(148, 163, 184, 0.06);
+}
+
+/* 9. Hero sections & main subtitles */
+
+.hero-section {
+  height: 85vh;
+  position: relative;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-section .overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9));
+}
+.hero-section h1,
+.hero-section p,
+.hero-section a {
+  position: relative;
+  z-index: 1;
+}
+
+/* In dark mode, make all “lead” and hero text fully readable */
+body.theme-dark .hero-section .lead,
+body.theme-dark .hero-section p,
+body.theme-dark .lead,
+body.theme-dark p.lead,
+body.theme-dark .page-subtitle,
+body.theme-dark .section-subtitle {
+  color: rgba(249, 250, 251, 0.95) !important;
+  opacity: 1 !important;
+}
+
+/* Also fix descriptions under headings like “All artworks” etc. */
+body.theme-dark .text-body-secondary {
+  color: rgba(226, 232, 240, 0.96) !important;
+}
+
+/* 10. Global text utilities in dark mode */
+
+body.theme-dark .text-secondary,
+body.theme-dark .text-muted {
+  color: var(--aurora-text-muted) !important;
+  opacity: 1 !important;
+}
+
+/* Do not fade text too much with opacity helpers in dark mode */
+body.theme-dark .opacity-50,
+body.theme-dark .opacity-75 {
+  opacity: 0.95 !important;
+}
+
+/* 11. Misc / helpers */
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mt-auto {
+  margin-top: auto !important;
+}
+
+@media (max-width: 767.98px) {
+  body {
+    padding-top: 64px;
+  }
+}

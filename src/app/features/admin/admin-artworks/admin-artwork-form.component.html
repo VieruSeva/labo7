@@ -1,0 +1,123 @@
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-sm border-0">
+        <div class="card-body">
+          <h2 class="h4 mb-3">
+            {{ isEditMode ? 'Edit artwork' : 'Add new artwork' }}
+          </h2>
+
+          <p *ngIf="error" class="alert alert-danger">{{ error }}</p>
+
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="mb-3">
+              <label class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="title"
+                placeholder="Artwork title"
+              />
+            </div>
+
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Year</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="year"
+                />
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Medium</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="medium"
+                  placeholder="Oil on canvas"
+                />
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label class="form-label">Price (USD)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  formControlName="price"
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Status</label>
+                <select class="form-select" formControlName="status">
+                  <option value="for-sale">For sale</option>
+                  <option value="display-only">Display only</option>
+                </select>
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Image URL</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  formControlName="imageUrl"
+                  placeholder="https://..."
+                />
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Artist name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="artistName"
+                />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Artist ID (optional)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="artistId"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea
+                rows="3"
+                class="form-control"
+                formControlName="description"
+              ></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end gap-2">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                (click)="cancel()"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="loading"
+              >
+                {{ loading ? 'Saving…' : 'Save' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

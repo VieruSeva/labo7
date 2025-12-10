@@ -1,0 +1,136 @@
+{
+  "artists": [
+    {
+      "id": 1,
+      "name": "Elena Vance",
+      "country": "France",
+      "biography": "Elena Vance is a contemporary painter known for her exploration of light and shadow in urban environments.",
+      "birthYear": 1985,
+      "websiteUrl": "https://example.com/elena",
+      "profileImageUrl": "https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?auto=format&fit=crop&w=400&q=80",
+      "mainStyle": "Impressionism"
+    },
+    {
+      "id": 2,
+      "name": "Marcus Thorne",
+      "country": "United Kingdom",
+      "biography": "Thorne sculpts with recycled materials to create imposing structures that challenge our perception of waste.",
+      "birthYear": 1978,
+      "websiteUrl": "https://example.com/marcus",
+      "profileImageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80",
+      "mainStyle": "Modern Sculpture"
+    },
+    {
+      "id": 3,
+      "name": "Yuki Tanaka",
+      "country": "Japan",
+      "biography": "A digital artist blending traditional calligraphy with algorithmic generation.",
+      "birthYear": 1992,
+      "websiteUrl": null,
+      "profileImageUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80",
+      "mainStyle": "Digital Abstract"
+    }
+  ],
+  "exhibitions": [
+    {
+      "id": 1,
+      "title": "Luminescence: The Light Within",
+      "location": "Grand Hall, Aurora Gallery",
+      "startDate": "2023-11-01",
+      "endDate": "2024-02-15",
+      "description": "An immersive journey through light, shadow, and the spaces in between.",
+      "heroImageUrl": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+      "theme": "Light & Shadow"
+    },
+    {
+      "id": 2,
+      "title": "Digital Horizons",
+      "location": "West Wing Annex",
+      "startDate": "2024-03-10",
+      "endDate": "2024-06-20",
+      "description": "Exploring the intersection of technology and human emotion.",
+      "heroImageUrl": "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1200&q=80",
+      "theme": "Technology"
+    }
+  ],
+  "artworks": [
+    {
+      "id": 101,
+      "title": "Morning Haze",
+      "year": 2022,
+      "medium": "Oil on Canvas",
+      "dimensions": "100 x 80 cm",
+      "price": 4500,
+      "imageUrl": "https://images.unsplash.com/photo-1579783902614-a3fb39279c0f?auto=format&fit=crop&w=800&q=80",
+      "description": "A serene depiction of a city waking up, covered in early morning fog.",
+      "artistId": 1,
+      "exhibitionId": 1,
+      "isFeatured": true
+    },
+    {
+      "id": 102,
+      "title": "Iron Giants",
+      "year": 2020,
+      "medium": "Recycled Steel",
+      "dimensions": "200 x 150 x 150 cm",
+      "price": 12000,
+      "imageUrl": "https://images.unsplash.com/photo-1554188248-986adbb73be0?auto=format&fit=crop&w=800&q=80",
+      "description": "An imposing sculpture made entirely of scrap car parts.",
+      "artistId": 2,
+      "exhibitionId": 1,
+      "isFeatured": true
+    },
+    {
+      "id": 103,
+      "title": "Algorithm #5",
+      "year": 2023,
+      "medium": "Digital Print",
+      "dimensions": "60 x 60 cm",
+      "price": 850,
+      "imageUrl": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80",
+      "description": "Generated patterns representing the flow of water.",
+      "artistId": 3,
+      "exhibitionId": 2,
+      "isFeatured": false
+    },
+    {
+      "id": 104,
+      "title": "Crimson Sky",
+      "year": 2021,
+      "medium": "Acrylic on Wood",
+      "dimensions": "120 x 40 cm",
+      "price": 3200,
+      "imageUrl": "https://images.unsplash.com/photo-1549887534-1541e9326642?auto=format&fit=crop&w=800&q=80",
+      "description": "A dramatic sunset abstracted into bands of color.",
+      "artistId": 1,
+      "exhibitionId": 1,
+      "isFeatured": true
+    },
+    {
+      "id": 105,
+      "title": "Void Structure",
+      "year": 2023,
+      "medium": "Concrete and Glass",
+      "dimensions": "50 x 50 x 50 cm",
+      "price": 5000,
+      "imageUrl": "https://images.unsplash.com/photo-1515463138280-67d1dcbf317f?auto=format&fit=crop&w=800&q=80",
+      "description": "A study in brutalism and transparency.",
+      "artistId": 2,
+      "exhibitionId": 2,
+      "isFeatured": false
+    },
+    {
+      "id": 106,
+      "title": "Neural Networking",
+      "year": 2023,
+      "medium": "Digital Projection",
+      "dimensions": "Variable",
+      "price": null,
+      "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+      "description": "A live projection mapping of neural pathways.",
+      "artistId": 3,
+      "exhibitionId": 2,
+      "isFeatured": false
+    }
+  ]
+}

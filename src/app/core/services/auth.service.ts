@@ -1,0 +1,22 @@
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Injectable({ providedIn: 'root' })
+export class AuthService {
+  private tokenKey = 'aurora_auth_token';
+
+  constructor(private router: Router) {}
+
+  login(email: string): void {
+    localStorage.setItem(this.tokenKey, btoa(email)); // Simple fake token
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
+    this.router.navigate(['/login']);
+  }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem(this.tokenKey);
+  }
+}
